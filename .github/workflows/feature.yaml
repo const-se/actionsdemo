@@ -1,0 +1,47 @@
+name: Feature
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go
+      - name: Checkout
+        uses: actions/checkout
+      - name: Build
+        run: go build -v ./...
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go
+      - name: Checkout
+        uses: actions/checkout
+      - name: Lint
+        run: golangci/golangci-lint-action
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go
+      - name: Checkout
+        uses: actions/checkout
+      - name: Test
+        run: go test -v ./...
+  test-race:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go
+      - name: Checkout
+        uses: actions/checkout
+      - name: Test
+        run: go test -race -v ./...
