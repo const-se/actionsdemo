@@ -1,6 +1,6 @@
 module github.com/const-se/actionsdemo
 
-go 1.23.3
+go 1.24.3
 
 require (
 	github.com/samber/lo v1.51.0
