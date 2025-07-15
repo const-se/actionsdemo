@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	defaultName     = "John Doe!"
+	defaultName     = "John Doe"
 	greetingPattern = "Hello, %s!"
 )
 
